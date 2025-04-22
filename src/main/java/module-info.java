@@ -1,4 +1,4 @@
-module mountain.cypherfy {
+module cypherfy {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -7,8 +7,8 @@ module mountain.cypherfy {
     requires com.dlsc.formsfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires jdk.compiler;
 
     opens cypherfy to javafx.fxml;
     exports cypherfy;
