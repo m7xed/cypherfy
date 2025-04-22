@@ -1,5 +1,5 @@
 .custom-button {
-    -fx-background-color: #00ffd0; /* Green background */
+    -fx-background-color: #02e8ff; /* Green background */
     -fx-text-fill: #000000; /* White text */
     -fx-font-size: 12px;
     -fx-padding: 8px 16px; /* Padding around text */
@@ -8,8 +8,8 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 8, 0.5, 0, 2); /* Shadow effect */
 }
 
-/* Hover effect */
 .custom-button:hover {
-    -fx-background-color: #008368; /* Darker green when hovered */
-    -fx-cursor: hand; /* Change cursor to a hand */
+    -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse the gradient on hover */
+    -fx-text-fill: #f9f9f9; /* Lighten the text color on hover */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 12, 0.0, 0, 2); /* Lighter shadow on hover */
 }
