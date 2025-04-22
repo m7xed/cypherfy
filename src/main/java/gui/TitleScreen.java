@@ -1,13 +1,10 @@
 package gui;
 
-import com.sun.tools.javac.Main;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-import java.util.Objects;
 
 public class TitleScreen {
     private final Scene titleScreen;
@@ -18,6 +15,8 @@ public class TitleScreen {
         CustomTitleBar titleBar = new CustomTitleBar(stage);
 
         Label title = new Label("Cypherfy");
+        title.getStyleClass().add("label");
+        title.setTranslateY(-100);
 
         pane.setTop(titleBar);
         pane.setCenter(title);
@@ -25,6 +24,7 @@ public class TitleScreen {
 
         titleScreen = new Scene(pane, 450,450);
 
+        titleScreen.getStylesheets().add(getClass().getResource("/miscStyles.css").toExternalForm());
         titleScreen.getStylesheets().add(getClass().getResource("/menuBarStyle.css").toExternalForm());
     }
 
