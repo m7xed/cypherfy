@@ -1,0 +1,15 @@
+.custom-button {
+    -fx-background-color: #00ffd0; /* Green background */
+    -fx-text-fill: #000000; /* White text */
+    -fx-font-size: 12px;
+    -fx-padding: 8px 16px; /* Padding around text */
+    -fx-border-radius: 2px; /* Rounded corners */
+    -fx-background-radius: 2px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 8, 0.5, 0, 2); /* Shadow effect */
+}
+
+/* Hover effect */
+.custom-button:hover {
+    -fx-background-color: #008368; /* Darker green when hovered */
+    -fx-cursor: hand; /* Change cursor to a hand */
+}
