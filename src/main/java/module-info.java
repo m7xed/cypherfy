@@ -12,4 +12,5 @@ module cypherfy {
 
     opens cypherfy to javafx.fxml;
     exports cypherfy;
+    exports backend;
 }
