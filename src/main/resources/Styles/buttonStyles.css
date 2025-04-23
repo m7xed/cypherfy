@@ -1,5 +1,6 @@
 
 .title-button {
+    -fx-cursor: hand;
     -fx-font-size: 30px; /* Adjust size as needed */
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff; /* White text color */
@@ -26,6 +27,7 @@
 }
 
 .menu-button {
+    -fx-cursor: hand;
     -fx-font-size: 28px; /* Adjust size as needed */
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff; /* White text color */
@@ -59,3 +61,26 @@
     -fx-text-fill: #f9f9f9; /* Lighten the text color on hover */
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 12, 0.0, 0, 2); /* Lighter shadow on hover */
 }
+
+.icon-button {
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-padding: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 8, 0.0, 0, 2);
+    -fx-cursor: hand;
+    -fx-shape: "M 10,0 L 90,0 L 80,50 L 0,50 Z"; /* Adjusted parallelogram for smaller square-like shape */
+    -fx-pref-width: 60px;
+    -fx-pref-height: 50px;
+    -fx-alignment: center;
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-opacity: 1;
+}
+
+.icon-button:hover {
+    -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb);
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 10, 0.0, 0, 2);
+}
+
+
+
