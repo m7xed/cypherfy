@@ -129,7 +129,7 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
   
 ## Credits
 
-- **Discord Icon**: Created by [Freepik](https://www.flaticon.com/authors/freepik) - Available on [Flaticon](https://www.flaticon.com/free-icons/discord)
+- **Discord Icon**: Created by [riajulislam](https://www.flaticon.com/authors/riajulislam) – Available on [Flaticon](https://www.flaticon.com/free-icons/discord)
 - **GitHub Icon**: Created by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) - Available on [Flaticon](https://www.flaticon.com/free-icons/github)
 
 
