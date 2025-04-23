@@ -1,5 +1,7 @@
 package gui;
 
+import gui.visualizations.CipherNames;
+import gui.visualizations.EncryptionScreen;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -43,15 +45,15 @@ public class MenuScreen {
 
         // Actions
         atbashButton.setOnAction(event -> {
-            // screenManager.switchScene(new AtbashCipherScreen(stage, screenManager).getScene());
+            screenManager.switchScene(new EncryptionScreen(stage, screenManager, CipherNames.ATBASH.getValue()).getScene());
         });
 
         caesarButton.setOnAction(event -> {
-            // screenManager.switchScene(new CaesarCipherScreen(stage, screenManager).getScene());
+            screenManager.switchScene(new EncryptionScreen(stage, screenManager, CipherNames.CAESAR.getValue()).getScene());
         });
 
         vigenereButton.setOnAction(event -> {
-            // screenManager.switchScene(new VigenereCipherScreen(stage, screenManager).getScene());
+            screenManager.switchScene(new EncryptionScreen(stage, screenManager, CipherNames.VIGENERE.getValue()).getScene());
         });
 
         backButton.setOnAction(event -> {
