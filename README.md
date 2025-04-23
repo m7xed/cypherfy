@@ -126,3 +126,11 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - **JUnit**: For providing the testing framework to ensure correctness and stability.
 - **OpenJFX Community**: For maintaining the JavaFX libraries.
 - **OpenAI's ChatGPT**: For assistance in writing and proof-checking this README markdown document.
+  
+## Credits
+
+- **GitHub Logo**: Icon created by [riajulislam](https://www.flaticon.com/free-icons/github) - Flaticon
+- **Discord Logo**: Icon created by [riajulislam](https://www.flaticon.com/free-icons/discord) - Flaticon
+- **Author**: [riajulislam](https://www.flaticon.com/authors/riajulislam) - Flaticon
+
+
