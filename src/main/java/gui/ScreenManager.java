@@ -1,10 +1,14 @@
 package gui;
 
 import javafx.animation.FadeTransition;
+import javafx.application.Platform;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -18,12 +22,20 @@ public class ScreenManager {
     }
 
     public void switchScene(Scene newScene) {
-        FadeTransition fadeOut = new FadeTransition(Duration.millis(300), stage.getScene().getRoot());
+        Parent oldRoot = stage.getScene().getRoot();
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(300), oldRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
         fadeOut.setOnFinished(e -> {
+            // 1) Swap in the new scene
             stage.setScene(newScene);
-            FadeTransition fadeIn = new FadeTransition(Duration.millis(300), stage.getScene().getRoot());
+
+            // 2) Force a layout update on the new scene
+            Platform.runLater(stage::sizeToScene);
+
+            // 3) Fade in the new scene
+            Parent newRoot = newScene.getRoot();
+            FadeTransition fadeIn = new FadeTransition(Duration.millis(300), newRoot);
             fadeIn.setFromValue(0.0);
             fadeIn.setToValue(1.0);
             fadeIn.play();
@@ -34,25 +46,44 @@ public class ScreenManager {
     public Scene createTemplateScene(Stage stage){
         // Create layout objects
         BorderPane borderPane = new BorderPane();
+        borderPane.setPadding(new Insets(10));
+
         VBox vBox = new VBox(20);
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(5);
-
-        // Create title bar object
-        CustomTitleBar titleBar = new CustomTitleBar(stage);
-
         borderPane.setCenter(vBox);
-        borderPane.setTop(titleBar);
 
-        borderPane.setStyle("-fx-background-color: linear-gradient(to right, #E55D87, #5FC3E4);");
+        borderPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8);");
 
         // Init Scene
-        return new Scene(borderPane);
+        return new Scene(borderPane,
+                GUIFeatures.GUI_WIDTH.getValue(),
+                GUIFeatures.GUI_HEIGHT.getValue());
     }
 
     public void applyStyleSheets(Scene scene) {
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/miscStyles.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/menuBarStyle.css")).toExternalForm());
+    }
+
+    public static Font loadFont(double size) {
+        Font font = Font.loadFont(
+                ScreenManager.class.getResourceAsStream("/fonts/CypherfyFont.otf"), size
+        );
+        if (font == null) {
+            System.err.println("⚠️ Failed to load /fonts/CypherfyFont.otf");
+        }
+        return font;
+    }
+
+    public static void applyFont(javafx.scene.control.Labeled node, int size) {
+        Font font = loadFont(size);
+        if (font != null) {
+            node.setFont(font);
+            System.out.println("Font loaded: " + font.getName());
+        } else {
+            System.err.println("⚠️ Failed to load /fonts/CypherfyFont.otf");
+        }
     }
 }
 
