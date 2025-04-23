@@ -1,79 +1,85 @@
-
 # Cypherfy: Interactive Encryption Sandbox
 
 ## Project Overview
 
-Cypherfy is an advanced Java-based interactive encryption sandbox that allows users to explore and experiment with a variety of cryptographic algorithms through a user-friendly JavaFX graphical interface. The application currently supports several classical ciphers including Caesar Cipher, Atbash Cipher, and ROT13. It is designed for both learning and practical use, enabling users to apply different encryption techniques to text input and view the corresponding transformations.
+Cypherfy is a Java-based interactive encryption sandbox that allows users to explore classical cryptographic algorithms via a user-friendly JavaFX graphical interface. It currently supports Caesar Cipher, Atbash Cipher, and ROT13, with plans for future algorithms like the Vigenère Cipher.
 
-The project emphasizes a smooth, aesthetically pleasing user experience with an intuitive interface and seamless transitions between different encryption methods. In the future, Cypherfy will incorporate additional cipher algorithms such as the Vigenère Cipher, and will expand on the core functionality with features like encryption history and file import/export capabilities.
+Cypherfy is designed with a smooth, visually appealing UI and intuitive interactions, making it both educational and practical for exploring encryption logic. Users can input text, view the transformation in real time, and enjoy polished transitions between components.
+
+---
 
 ## Key Features
 
-### Implemented Cryptographic Algorithms:
-- **Caesar Cipher**: This cipher shifts each letter in the plaintext by a fixed number of positions in the alphabet. It is one of the simplest and oldest ciphers.
-- **Atbash Cipher**: A substitution cipher where each letter of the alphabet is mapped to its reverse counterpart (e.g., 'A' becomes 'Z', 'B' becomes 'Y').
-- **ROT13**: A special case of the Caesar Cipher, shifting letters by 13 positions, frequently used in obscuring text in casual settings.
+### ✅ Implemented Cryptographic Algorithms
 
-### GUI Screens:
-- **Title Screen**: The entry point to the application, displaying the project logo and providing access to other parts of the program.
-- **Menu Screen**: Provides navigation buttons for the user to select which cipher they wish to interact with, including the Atbash Cipher, Caesar Cipher, and Vigenère Cipher (forthcoming).
-- **Encryption Screen**: A work-in-progress screen that will allow users to input text, apply the selected cipher, and view the encrypted output.
-- **Responsive Design**: The interface is fully resizable and adapts to different screen sizes, with minimum and maximum width/height constraints set for a consistent experience.
+- **Caesar Cipher**: Shifts each letter in the plaintext by a fixed number of positions in the alphabet.
+- **Atbash Cipher**: Substitution cipher mapping each letter to its opposite (e.g., A → Z).
+- **ROT13**: Caesar cipher variant that shifts each letter by 13 positions.
 
-### Core Functionalities:
-- **Cipher Application**: The user can enter text and select one of the available ciphers to encrypt the input.
-- **Smooth Scene Transitions**: JavaFX's `FadeTransition` provides seamless scene changes, enhancing the user experience as they navigate between the title screen, menu, and cipher screens.
-- **Custom Fonts & Icons**: The application features custom fonts (CypherfyFont.otf) and logos to align with the branding and aesthetic goals of the project.
-- **Extensible GUI**: The core GUI framework allows for easy expansion with additional ciphers and features in the future.
+### 🎨 Graphical Interface
 
-### Algorithm Implementations:
-- **CaesarCipher**: Implements the Caesar cipher, allowing users to specify a key (shift value) for text encryption.
-- **AtbashCipher**: Implements the Atbash cipher, reversing the alphabet for substitution-based encryption.
-- **ROT13**: Implements ROT13 encryption, which shifts each letter of the alphabet by 13 positions.
-- **Screen Management**: `ScreenManager` class handles the creation of scenes and application of CSS styles, ensuring a cohesive and professional user interface design.
+- **Title Screen**: Custom-styled entry screen with branding and logo.
+- **Menu Screen**: Navigation to select available ciphers.
+- **Encryption Screens**:
+  - Live encryption with visual feedback.
+  - Fade transitions between screens.
+  - Fully resizable UI with responsive design.
+- **Custom Buttons & Shapes**: CSS-styled parallelogram buttons with unique shape customization.
+- **Custom Fonts & Icons**: Stylish embedded fonts and project-themed assets.
 
-### Testing:
-- **JUnit Tests**: Unit tests for the Caesar and Atbash ciphers have been developed to validate their correctness. These tests ensure that the encryption and decryption functions work as expected under various input conditions.
+### 🧠 Smart Input Handling
+
+- **Text Input Validation**:
+  - Only allows alphabetic characters (A–Z, a–z).
+  - Character limit set to 15 for visualization clarity.
+- **Real-time Feedback**:
+  - Input field gently flashes red on invalid entry (e.g., pasting non-letter text or exceeding limit).
+  - Smooth fade-in/fade-out animation using JavaFX `Timeline`.
+- **Keyboard Smart Filtering**:
+  - System commands (e.g., Ctrl+A) and Enter key are ignored by the flash mechanism.
+  - Flash only triggers on truly invalid input, not UI shortcuts.
+
+### 🧱 Modular Codebase
+
+- **ScreenManager**: Handles smooth scene creation and transitions.
+- **Separation of Concerns**: Cipher logic separated from UI logic for clarity and testability.
+- **CSS Customization**: Styles are easily overridden using JavaFX’s built-in theming support.
+
+---
 
 ## Current Status
 
-### Completed Features:
-- **Cipher Implementations**:
-  - **Caesar Cipher**: Fully implemented and operational.
-  - **Atbash Cipher**: Fully implemented and operational.
-  - **ROT13**: Semi implimented and non-funcitonal.
-- **Graphical User Interface**:
-  - Title screen created, including a custom font and project logo.
-  - Menu screen with functional buttons for selecting different ciphers.
-  - Smooth scene transitions with fade-in/fade-out animations.
-  - Custom styling for buttons and labels using CSS.
-- **Scene Management**:
-  - `ScreenManager` handles transitions between scenes with smooth animations.
-  - Template scenes for different UI components (title screen, menu screen, etc.).
-- **Test Coverage**:
-  - Basic unit tests written for Caesar and Atbash ciphers using JUnit.
+### ✅ Completed Features
 
-### Features to Be Implemented:
-- **Vigenère Cipher**: The Vigenère cipher is planned for implementation, which will require handling dynamic keys of varying lengths.
-- **ROT13**: The ROT13 cipher is partially complete, but requires finishing development
-- **Encryption Screen**: Development of the encryption screen where users can input text and apply the selected cipher. This will include handling the input, processing the encryption, and displaying the output.
-- **Advanced Features**:
-  - **Encryption History**: Implement a feature that allows users to track their encryption operations and results.
-  - **File Import/Export**: Users will be able to import text files for encryption and export the encrypted text.
-  - **Customization Options**: Users may have the ability to adjust font sizes, themes, or select from multiple fonts.
-  - **Key Management**: Consider adding functionality for custom keys, especially for ciphers that require them (e.g., Vigenère).
+- Caesar Cipher, Atbash Cipher fully functional.
+- ROT13 base added (not fully functional yet).
+- Full JavaFX integration with:
+  - Title screen and menu system.
+  - Custom-styled buttons and animations.
+- Text input filtering and flash effect.
+- Unit tests for Caesar and Atbash ciphers.
+- Template scene system via `ScreenManager`.
 
-### Known Issues:
-- **Encryption Screen**: The screen for user input and cipher selection is currently a placeholder.
-- **Vigenère Cipher**: The Vigenère cipher has not yet been implemented, but its structure is planned and will be integrated once the encryption screen is functional.
+### 🔜 Planned Features
+
+- **Vigenère Cipher**: Fully functional cipher with custom key support.
+- **ROT13 Completion**: Make ROT13 a usable standalone option.
+- **Encryption History**: Track and display past operations.
+- **File Import/Export**: Load input from files and save encrypted output.
+- **Advanced GUI Features**:
+  - Font/theme customization.
+  - Expanded visual feedback for encryption steps.
+
+---
 
 ## Getting Started
 
-### Prerequisites:
-- **Java Development Kit (JDK)**: The project requires JDK 17 or higher.
-- **JavaFX**: JavaFX is required for the graphical interface. It can be downloaded and configured from [OpenJFX](https://openjfx.io/).
+### 📦 Prerequisites
 
-### Installation:
+- **JDK 17 or later**
+- **JavaFX SDK** (e.g., from [OpenJFX](https://openjfx.io/))
+
+### 🚀 Installation
 
 1. **Clone the Repository**:
    ```bash
@@ -81,8 +87,7 @@ The project emphasizes a smooth, aesthetically pleasing user experience with an 
    cd cypherfy
    ```
 
-2. **Install Dependencies**:
-   Ensure that JavaFX is set up correctly in your project. If you are using Maven, you can include the JavaFX dependencies as follows:
+2. **Set Up Dependencies** (for Maven projects):
    ```xml
    <dependency>
        <groupId>org.openjfx</groupId>
@@ -92,39 +97,49 @@ The project emphasizes a smooth, aesthetically pleasing user experience with an 
    ```
 
 3. **Run the Application**:
-   Open the project in your preferred IDE (IntelliJ IDEA, Eclipse, etc.), and run the `EntryPoint.java` class. This will launch the JavaFX application window.
+   - Open in IntelliJ IDEA, Eclipse, or your IDE of choice.
+   - Run `EntryPoint.java`.
 
-   Alternatively, if you're using Maven, run the following command:
+   Or use Maven:
    ```bash
    mvn javafx:run
    ```
 
-4. **Running Unit Tests**:
-   To ensure the correctness of the encryption algorithms, run the unit tests using JUnit:
+4. **Run Unit Tests**:
    ```bash
    mvn test
    ```
 
-## Contributing
+---
 
-We welcome contributions to the Cypherfy project! If you'd like to contribute, please fork the repository and submit a pull request. Ensure that your changes follow the project's coding standards and include unit tests for any new features or bug fixes.
+## 🧪 Testing
 
-### Guidelines for Contributions:
-- **Code Style**: Follow the existing coding conventions, including naming conventions and indentation style.
-- **Unit Tests**: If you're adding a new cipher or feature, please write corresponding unit tests to ensure the functionality works as expected.
-- **Documentation**: Update the README or other relevant documentation to reflect any new changes or features.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+- **JUnit** tests included for Caesar and Atbash implementations.
+- More tests planned as additional ciphers and features are completed.
 
 ---
 
-## Acknowledgments
+## 🤝 Contributing
 
-- **JavaFX**: For providing the framework to create rich client applications with a smooth and responsive UI.
-- **JUnit**: For providing the testing framework to ensure correctness and stability.
-- **OpenJFX Community**: For maintaining the JavaFX libraries.
-- **OpenAI's ChatGPT**: For assistance in writing and proof-checking this README markdown document.
+We welcome contributions! Fork the repo, create a new branch, and submit a pull request.
 
+### Contribution Guidelines
 
+- Follow Java coding conventions.
+- Include unit tests for new features.
+- Update this README and relevant documentation if needed.
+
+---
+
+## 📄 License
+
+Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙌 Acknowledgments
+
+- **JavaFX** – UI Framework.
+- **JUnit** – Testing framework.
+- **OpenJFX Community** – For maintaining JavaFX.
+- **OpenAI ChatGPT** – Assistance with planning, UI strategy, and writing.
