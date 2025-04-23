@@ -129,8 +129,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
   
 ## Credits
 
-- **GitHub Logo**: Icon created by [riajulislam](https://www.flaticon.com/free-icons/github) - Flaticon
-- **Discord Logo**: Icon created by [riajulislam](https://www.flaticon.com/free-icons/discord) - Flaticon
-- **Author**: [riajulislam](https://www.flaticon.com/authors/riajulislam) - Flaticon
+- **Discord Icon**: Created by [Freepik](https://www.flaticon.com/authors/freepik) - Available on [Flaticon](https://www.flaticon.com/free-icons/discord)
+- **GitHub Icon**: Created by [Pixel perfect](https://www.flaticon.com/authors/pixel-perfect) - Available on [Flaticon](https://www.flaticon.com/free-icons/github)
+
 
 
