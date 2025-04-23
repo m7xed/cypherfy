@@ -1,73 +1,71 @@
 package gui;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
-
 public class MenuScreen {
     private final Scene menuScene;
 
     public MenuScreen(Stage stage, ScreenManager screenManager) {
+        // Create scene using template method
+        menuScene = screenManager.createTemplateScene(stage);
 
-
-        VBox vBox = new VBox(20);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
-        vBox.setPrefSize(GUIFeatures.GUI_WIDTH.getValue(), GUIFeatures.GUI_HEIGHT.getValue());
-
-        // Create Buttons for Ciphers
+        // Retrieve the root layout (BorderPane) and center VBox from the scene
+        BorderPane root = (BorderPane) menuScene.getRoot();
+        VBox vBox = (VBox) root.getCenter();
+        vBox.setAlignment(Pos.TOP_LEFT);  // So the spacer can push the back button down
+        vBox.setPadding(new Insets(10, 10, 10, 20));
+        vBox.setSpacing(15);
+        // Buttons
         Button atbashButton = new Button("Atbash Cipher");
         Button caesarButton = new Button("Caesar Cipher");
         Button vigenereButton = new Button("Vigenère Cipher");
         Button backButton = new Button("Back to Title");
 
-        // Apply fonts using ScreenManager
-        ScreenManager.applyFont(atbashButton, 24);
-        ScreenManager.applyFont(caesarButton, 24);
-        ScreenManager.applyFont(vigenereButton, 24);
-        ScreenManager.applyFont(backButton, 24);
+        // Font styles
+        atbashButton.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 28;");
+        caesarButton.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 28;");
+        vigenereButton.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 28;");
+        backButton.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 28;");
 
-        // Add style classes (if you have styles for buttons)
-        atbashButton.getStyleClass().add("cipher-button");
-        caesarButton.getStyleClass().add("cipher-button");
-        vigenereButton.getStyleClass().add("cipher-button");
-        backButton.getStyleClass().add("back-button");
 
-        // Button actions
+        // CSS styles
+
+        atbashButton.getStyleClass().add("menu-button");
+        caesarButton.getStyleClass().add("menu-button");
+        vigenereButton.getStyleClass().add("menu-button");
+        backButton.getStyleClass().add("menu-button");
+        screenManager.applyStyleSheets(menuScene);
+
+        // Actions
         atbashButton.setOnAction(event -> {
-            // Go to Atbash Cipher screen (implement this screen)
-//            screenManager.switchScene(new AtbashCipherScreen(stage, screenManager).getScene());
+            // screenManager.switchScene(new AtbashCipherScreen(stage, screenManager).getScene());
         });
 
         caesarButton.setOnAction(event -> {
-            // Go to Caesar Cipher screen (implement this screen)
-//            screenManager.switchScene(new CaesarCipherScreen(stage, screenManager).getScene());
+            // screenManager.switchScene(new CaesarCipherScreen(stage, screenManager).getScene());
         });
 
         vigenereButton.setOnAction(event -> {
-            // Go to Vigenère Cipher screen (implement this screen)
-//            screenManager.switchScene(new VigenereCipherScreen(stage, screenManager).getScene());
+            // screenManager.switchScene(new VigenereCipherScreen(stage, screenManager).getScene());
         });
 
         backButton.setOnAction(event -> {
-            // Go back to the Title screen
-//            screenManager.switchScene(new TitleScreen(stage, screenManager).getTitleScene());
+            screenManager.switchScene(new TitleScreen(stage, screenManager).getTitleScene());
         });
 
-        // Add buttons to the VBox layout
-        vBox.getChildren().addAll(atbashButton, caesarButton, vigenereButton, backButton);
+        // Spacer to push backButton down
+        Region spacer = new Region();
+        VBox.setVgrow(spacer, Priority.ALWAYS);
 
-        vBox.applyCss();
-        vBox.layout();
+        // Add all components
+        vBox.getChildren().addAll(atbashButton, caesarButton, vigenereButton, spacer, backButton);
 
-        menuScene = new Scene(vBox,
-                GUIFeatures.GUI_WIDTH.getValue(),
-                GUIFeatures.GUI_HEIGHT.getValue()
-        );
-
+        // Apply CSS styles
         screenManager.applyStyleSheets(menuScene);
     }
 
