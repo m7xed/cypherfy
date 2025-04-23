@@ -62,6 +62,7 @@ public class ScreenManager {
     }
 
     public void applyStyleSheets(Scene scene) {
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/fieldStyles.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/styles/labelStyles.css")).toExternalForm());
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/buttonStyles.css")).toExternalForm());
     }
