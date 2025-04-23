@@ -4,3 +4,23 @@
     -fx-font-family: "Segoe UI", sans-serif;
     -fx-padding: 5px;
 }
+
+.title-label {
+    -fx-font-size: 30px; /* Adjust size as needed */
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* White text color */
+    -fx-background-radius: 0px; /* Sharp corners */
+    -fx-padding: 10px 55px; /* Padding for the text */
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 2); /* Shadow effect */
+    -fx-border-radius: 0px; /* No rounded corners */
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-opacity: 1;
+    -fx-text-alignment: center;
+    -fx-font-smoothing-type: lcd;
+    -fx-transition: all 0.3s ease-in-out; /* Smooth transition effect */
+
+    /* Create a parallelogram with angled sides */
+    -fx-shape: "M 20,0 L 280,0 L 250,100 L 0,100 Z"; /* Parallelogram with both angled sides */
+}
