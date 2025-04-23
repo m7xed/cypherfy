@@ -20,7 +20,7 @@ public class TitleScreen {
 
         Button title = new Button("Cypherfy");
         title.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 48;");
-        title.getStyleClass().add("title");
+        title.getStyleClass().add("title-button");
 
         title.setOnAction(event -> {
             screenManager.switchScene(new MenuScreen(stage, screenManager).getMenuScene());
