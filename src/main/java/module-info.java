@@ -9,6 +9,7 @@ module cypherfy {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires jdk.compiler;
+    requires java.desktop;
 
     opens cypherfy to javafx.fxml;
     exports cypherfy;
