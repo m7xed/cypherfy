@@ -1,6 +1,7 @@
 package cypherfy;
 
 import gui.CustomTitleBar;
+import gui.ScreenManager;
 import gui.TitleScreen;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -11,7 +12,7 @@ import java.io.IOException;
 public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        TitleScreen titleScreen = new TitleScreen(stage);
+        TitleScreen titleScreen = new TitleScreen(stage, new ScreenManager(stage));
 
         stage.setScene(titleScreen.getTitleScene());
         stage.setTitle("Cypherfy");
