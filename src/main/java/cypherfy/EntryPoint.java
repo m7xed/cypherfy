@@ -1,31 +1,42 @@
 package cypherfy;
 
-import gui.CustomTitleBar;
+import gui.GUIFeatures;
 import gui.ScreenManager;
 import gui.TitleScreen;
 import javafx.application.Application;
+import javafx.scene.image.Image;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
+        Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/CypherfyFont.otf"), 48);
+        if (customFont == null) {
+            System.err.println("⚠️  Failed to load /fonts/CypherfyFont.otf");
+        }
+
         TitleScreen titleScreen = new TitleScreen(stage, new ScreenManager(stage));
 
         stage.setScene(titleScreen.getTitleScene());
         stage.setTitle("Cypherfy");
-        stage.setWidth(800);
-        stage.setHeight(600);
+        // Stage Dimensions
+        stage.setWidth(GUIFeatures.GUI_WIDTH.getValue());
+        stage.setHeight(GUIFeatures.GUI_HEIGHT.getValue());
+        stage.setMinWidth(GUIFeatures.GUI_MIN_WIDTH.getValue());
+        stage.setMinHeight(GUIFeatures.GUI_MIN_HEIGHT.getValue());
+        stage.setResizable(true);
 
-        stage.iconifiedProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue) {
-                CustomTitleBar.restoreWindow(stage);
-            }
-        });
+        stage.getIcons().add(new Image(Objects.requireNonNull(getClass()
+                .getResourceAsStream("/Cypherfy_Logo.png"))));
 
-        stage.initStyle(StageStyle.TRANSPARENT);
+
+        stage.initStyle(StageStyle.DECORATED);
         stage.show();
     }
 
