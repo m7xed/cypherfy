@@ -33,7 +33,7 @@ public class EntryPoint extends Application {
         stage.setResizable(true);
 
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass()
-                .getResourceAsStream("/Cypherfy_Logo.png"))));
+                .getResourceAsStream("/Logos/Cypherfy_Logo.png"))));
 
 
         stage.initStyle(StageStyle.DECORATED);
