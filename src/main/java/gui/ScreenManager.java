@@ -62,8 +62,7 @@ public class ScreenManager {
     }
 
     public void applyStyleSheets(Scene scene) {
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/miscStyles.css")).toExternalForm());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/menuBarStyle.css")).toExternalForm());
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/buttonStyles.css")).toExternalForm());
     }
 
     public static Font loadFont(double size) {
