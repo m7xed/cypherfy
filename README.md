@@ -121,7 +121,7 @@ Cypherfy is designed with a smooth, visually appealing UI and intuitive interact
 
 ## 🤝 Contributing
 
-We welcome contributions! Fork the repo, create a new branch, and submit a pull request.
+I welcome contributions! Fork the repo, create a new branch, and submit a pull request.
 
 ### Contribution Guidelines
 
