@@ -1,31 +1,36 @@
 package gui;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
 
+import javafx.stage.Stage;
 
 public class TitleScreen {
     private final Scene titleScreen;
 
-    public TitleScreen(Stage stage) {
-        BorderPane pane = new BorderPane();
+    public TitleScreen(Stage stage, ScreenManager screenManager) {
+        // Create scene with helper method
+        this.titleScreen = screenManager.createTemplateScene(stage);
 
-        CustomTitleBar titleBar = new CustomTitleBar(stage);
+        // Access Layouts
+        BorderPane root = (BorderPane) titleScreen.getRoot();
+        CustomTitleBar titleBar = (CustomTitleBar) root.getTop();
+        VBox vBox = (VBox) root.getCenter();
 
         Label title = new Label("Cypherfy");
         title.getStyleClass().add("label");
-        title.setTranslateY(-100);
 
-        pane.setTop(titleBar);
-        pane.setCenter(title);
-        pane.setStyle("-fx-background-color: linear-gradient(to right, #E55D87, #5FC3E4);");
+        Button encryptMenu = new Button("Encrypt Message");
+        encryptMenu.getStyleClass().add("encrypt-button");
 
-        titleScreen = new Scene(pane, 450,450);
+        encryptMenu.setOnAction(event -> {
+            screenManager.switchScene(new MenuScreen(stage, screenManager, titleBar).getScene());
+        });
 
-        titleScreen.getStylesheets().add(getClass().getResource("/miscStyles.css").toExternalForm());
-        titleScreen.getStylesheets().add(getClass().getResource("/menuBarStyle.css").toExternalForm());
+        vBox.getChildren().addAll(title, encryptMenu);
+        screenManager.applyStyleSheets(titleScreen);
     }
 
     public Scene getTitleScene() {
