@@ -42,6 +42,7 @@ You can build and run the application by using the following steps:
     - **Minimize Animation**: Shrinks and moves the window towards the taskbar.
     - **Maximize/Restore Animation**: Scales the window up and restores it to its original size and position.
 - **GUI Styles**: Modern, sharp design with a gradient background and dynamic title bar.
+- **Cipher Algorithms**: Currently implimented caeser cipher and atbash backend logic
 
 ## Known Issues
 
