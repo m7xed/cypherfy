@@ -1,6 +1,5 @@
-/* Apply a sharp, modern font like Montserrat */
-.label {
-    -fx-font-family: 'Montserrat', sans-serif;
+
+.title {
     -fx-font-size: 30px; /* Adjust size as needed */
     -fx-font-weight: bold;
     -fx-text-fill: #ffffff; /* White text color */
@@ -20,7 +19,7 @@
     -fx-shape: "M 20,0 L 280,0 L 250,100 L 0,100 Z"; /* Parallelogram with both angled sides */
 }
 
-.label:hover {
+.title:hover {
     -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb); /* Reverse the gradient on hover */
     -fx-text-fill: #f9f9f9; /* Lighten the text color on hover */
     -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 12, 0.0, 0, 2); /* Lighter shadow on hover */
