@@ -1,0 +1,6 @@
+.credit-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 5px;
+}
