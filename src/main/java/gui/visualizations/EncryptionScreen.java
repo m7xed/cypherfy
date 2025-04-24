@@ -27,7 +27,7 @@ public class EncryptionScreen {
 
     public EncryptionScreen(Stage stage, ScreenManager screenManager, String cipherName) {
 
-        encryptionScreen = screenManager.createTemplateScene(stage);
+        encryptionScreen = ScreenManager.createTemplateScene(stage);
 
         // Access layout
         BorderPane root = (BorderPane) encryptionScreen.getRoot();
@@ -100,7 +100,21 @@ public class EncryptionScreen {
         encrypt.setOnAction(e -> {
             String text = input.getText();
 
-            // Add encryption visualisation and logic
+            switch (cipherName) {
+                case "Caesar Cipher":
+                    screenManager.switchScene(new CaesarVisual(stage, screenManager, text).getScene());
+
+                case "Vigenere Cipher":
+
+                case "ATBash Cipher":
+
+
+
+            }
+
+
+
+
 
         });
 
