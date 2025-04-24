@@ -1,5 +1,6 @@
 package gui.visualizations;
 
+import gui.MenuScreen;
 import gui.ScreenManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -97,6 +98,13 @@ public class EncryptionScreen {
                 "-fx-shape: \"M 15,0 L 210,0 L 188,75 L 0,75 Z\";\n");
         encrypt.getStyleClass().add("menu-button");
 
+        Button backButton = new Button("Back");
+        backButton.setStyle("-fx-font-family: 'SDDystopianDemo';");
+        backButton.getStyleClass().add("menu-button");
+        backButton.setOnAction(_ -> {
+            screenManager.switchScene(new MenuScreen(stage, screenManager).getMenuScene());
+        });
+
         encrypt.setOnAction(_ -> {
             String text = input.getText();
 
@@ -125,6 +133,7 @@ public class EncryptionScreen {
         titleContainer.setPadding(new Insets(10, 0, 10, 0)); // Optional: add spacing
 
         root.setTop(titleContainer);
+        root.setBottom(backButton);
 
         vBox.getChildren().addAll(inputContainer, encrypt);
 
