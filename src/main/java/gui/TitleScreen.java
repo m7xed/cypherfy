@@ -18,7 +18,7 @@ public class TitleScreen {
 
     public TitleScreen(Stage stage, ScreenManager screenManager) {
         // Create scene with helper method
-        this.titleScreen = screenManager.createTemplateScene(stage);
+        this.titleScreen = ScreenManager.createTemplateScene(stage);
 
         // Access Layouts
         BorderPane root = (BorderPane) titleScreen.getRoot();
