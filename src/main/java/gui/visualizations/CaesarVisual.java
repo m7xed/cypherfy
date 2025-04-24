@@ -25,7 +25,7 @@ public class CaesarVisual {
         ScrollPane scrollPane = (ScrollPane) root.getCenter();
 
         VBox centerBox = new VBox(10); // Added spacing between components
-        centerBox.setAlignment(Pos.CENTER_LEFT); // Align to the left
+        centerBox.setAlignment(Pos.CENTER); // Align to the left
         centerBox.setPadding(new Insets(20));
         root.setCenter(centerBox);
 
@@ -41,6 +41,7 @@ public class CaesarVisual {
         keySlider.setShowTickLabels(true);
         keySlider.setShowTickMarks(true);
         keySlider.setSnapToTicks(true);
+        keySlider.setStyle("-fx-font-size: 24px;");
         keySlider.getStyleClass().add("slider");
         centerBox.getChildren().add(keySlider);
 
@@ -147,7 +148,7 @@ public class CaesarVisual {
         // Add final result
         HBox finalResultBox = new HBox();
         finalResultBox.setOpacity(0);
-        FadeTransition fadeFinal = new FadeTransition(Duration.millis(500), finalResultBox);
+        FadeTransition fadeFinal = new FadeTransition(Duration.millis(1000), finalResultBox);
         fadeFinal.setFromValue(0);
         fadeFinal.setToValue(1);
         st.getChildren().add(fadeFinal);
