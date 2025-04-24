@@ -28,14 +28,14 @@ public class TitleScreen {
         title.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 48;");
         title.getStyleClass().add("title-button");
 
-        title.setOnAction(event -> {
+        title.setOnAction(_ -> {
             screenManager.switchScene(new MenuScreen(stage, screenManager).getMenuScene());
         });
 
         Button githubButton = ButtonHelper.createIconButton("/Logos/Github_Logo.png", 30);
         Button discordButton = ButtonHelper.createIconButton("/Logos/Discord_Logo.png", 30);
 
-        githubButton.setOnAction(event -> {
+        githubButton.setOnAction(_ -> {
             try {
                 Desktop.getDesktop().browse(new URI("https://github.com/m7xed/Cypherfy"));
             } catch (Exception e) {

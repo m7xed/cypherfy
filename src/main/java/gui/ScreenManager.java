@@ -28,7 +28,7 @@ public class ScreenManager {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(300), oldRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-        fadeOut.setOnFinished(e -> {
+        fadeOut.setOnFinished(_ -> {
             // 1) Swap in the new scene
             stage.setScene(newScene);
 

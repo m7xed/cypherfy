@@ -97,7 +97,7 @@ public class EncryptionScreen {
                 "-fx-shape: \"M 15,0 L 210,0 L 188,75 L 0,75 Z\";\n");
         encrypt.getStyleClass().add("menu-button");
 
-        encrypt.setOnAction(e -> {
+        encrypt.setOnAction(_ -> {
             String text = input.getText();
 
             switch (cipherName) {
@@ -118,7 +118,7 @@ public class EncryptionScreen {
 
         });
 
-        input.setOnAction(e -> encrypt.fire());
+        input.setOnAction(_ -> encrypt.fire());
 
         HBox titleContainer = new HBox(title);
         titleContainer.setAlignment(Pos.CENTER); // Center horizontally
@@ -144,7 +144,7 @@ public class EncryptionScreen {
                 new KeyFrame(Duration.millis(300), new KeyValue(overlay.opacityProperty(), 0))
         );
 
-        tl.setOnFinished(e -> isFlashing = false); // Reset the flag when the animation finishes
+        tl.setOnFinished(_ -> isFlashing = false); // Reset the flag when the animation finishes
         tl.play();
     }
 

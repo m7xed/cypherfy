@@ -42,7 +42,7 @@ public class CaesarVisual {
         Button backButton = new Button("Back");
         backButton.setStyle("-fx-font-family: 'SDDystopianDemo';");
         backButton.getStyleClass().add("menu-button");
-        backButton.setOnAction(e -> {
+        backButton.setOnAction(_ -> {
             screenManager.switchScene(new EncryptionScreen(stage, screenManager, CipherNames.CAESAR.getValue()).getScene());
 
         });
@@ -50,7 +50,7 @@ public class CaesarVisual {
         Button submitButton = new Button("Submit");
         submitButton.setStyle("-fx-font-family: 'SDDystopianDemo';");
         submitButton.getStyleClass().add("menu-button");
-        submitButton.setOnAction(e -> {
+        submitButton.setOnAction(_ -> {
             playVisualisation(data, (int) keySlider.getValue());
         });
 
