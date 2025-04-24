@@ -5,13 +5,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 
-
 import javafx.stage.Stage;
 import utils.ButtonHelper;
 
 import java.awt.Desktop;
 import java.net.URI;
-
 
 public class TitleScreen {
     private final Scene titleScreen;
@@ -43,7 +41,6 @@ public class TitleScreen {
             }
         });
 
-
         HBox iconBox = new HBox(githubButton, discordButton);
         iconBox.setStyle("-fx-padding: 6;");
         iconBox.setTranslateX(4);
@@ -58,13 +55,10 @@ public class TitleScreen {
         bottomRightPane.setPrefHeight(60); // reserve bottom height
         bottomRightPane.getChildren().addAll(iconBox, creditLabel);
 
-
         StackPane.setAlignment(iconBox, javafx.geometry.Pos.BOTTOM_RIGHT);
         StackPane.setAlignment(creditLabel, javafx.geometry.Pos.BOTTOM_LEFT);
 
-
         root.setBottom(bottomRightPane);
-
 
         vBox.getChildren().addAll(title);
         screenManager.applyStyleSheets(titleScreen);
@@ -74,5 +68,3 @@ public class TitleScreen {
         return titleScreen;
     }
 }
-
-
