@@ -1,0 +1,31 @@
+.slider .track {
+    -fx-background-color: #ffffffaa; /* semi-transparent white for contrast */
+    -fx-background-radius: 8;
+    -fx-pref-height: 16px;
+}
+
+.slider .thumb {
+    -fx-background-color: white;
+    -fx-background-radius: 50%;
+    -fx-pref-width: 28px;
+    -fx-pref-height: 28px;
+    -fx-effect: dropshadow(gaussian, #2bc8f8aa, 8, 0.4, 0, 1);
+    -fx-cursor: hand;
+}
+
+.slider .thumb:hover {
+    -fx-effect: dropshadow(gaussian, #e400c9cc, 10, 0.5, 0, 1);
+}
+
+.slider .axis {
+    -fx-tick-label-fill: white;
+    -fx-font-size: 28px;
+    -fx-font-family: 'SDDystopianDemo', 'CypherfyFont', sans-serif;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, black, 2, 0.5, 0, 0);
+}
+
+.slider .tick-mark {
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
+}
