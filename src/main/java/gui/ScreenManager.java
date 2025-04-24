@@ -77,11 +77,11 @@ public class ScreenManager {
         ScrollPane scrollPane = new ScrollPane(vBox);
         scrollPane.setFitToWidth(true); // make scroll content match width
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // horizontal scrolling off
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8); -fx-padding: 0; -fx-border-width: 0;");
 
         // Make sure the VBox fills the ScrollPane by setting its preferred height
-        vBox.setMinHeight(Region.USE_PREF_SIZE); // or Region.USE_COMPUTED_SIZE depending on your needs
+        vBox.setMinHeight(Region.USE_COMPUTED_SIZE);
 
         borderPane.setCenter(scrollPane);
         borderPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8);");
