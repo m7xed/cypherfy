@@ -1,7 +1,9 @@
 package cypherfy;
 
+import backend.system.ConfigManager;
 import gui.GUIFeatures;
 import gui.ScreenManager;
+import backend.system.ThemeHandler;
 import gui.TitleScreen;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -15,6 +17,14 @@ import java.util.Objects;
 public class EntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
+        ConfigManager configManager = new ConfigManager();
+        String theme = configManager.getTheme();
+        if (theme == null || theme.isBlank()) {
+            System.err.println("⚠️  Failed to config theme. Using Default Theme.");
+            theme = "theme-default.css";
+        }
+        ThemeHandler.initDefaultTheme();
 
         Font customFont = Font.loadFont(getClass().getResourceAsStream("/fonts/CypherfyFont.otf"), 48);
         if (customFont == null) {

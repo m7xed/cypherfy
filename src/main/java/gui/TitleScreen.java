@@ -1,15 +1,18 @@
 package gui;
 
+import backend.system.ThemeHandler;
+import utils.ButtonHelper;
+
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.*;
-
 import javafx.stage.Stage;
-import utils.ButtonHelper;
 
 import java.awt.Desktop;
 import java.net.URI;
+import java.util.Objects;
 
 public class TitleScreen {
     private final Scene titleScreen;
@@ -17,6 +20,9 @@ public class TitleScreen {
     public TitleScreen(Stage stage, ScreenManager screenManager) {
         // Create scene with helper method
         this.titleScreen = ScreenManager.createTemplateScene(stage);
+
+        String themePath = ThemeHandler.getThemePath();
+        this.titleScreen.getStylesheets().add(Objects.requireNonNull(getClass().getResource(themePath)).toExternalForm());
 
         // Access Layouts
         BorderPane root = (BorderPane) titleScreen.getRoot();
@@ -41,12 +47,27 @@ public class TitleScreen {
             }
         });
 
+        Button settingsButton = ButtonHelper.createIconButton("/Logos/Settings_Logo.png", 30);
+
+        HBox menuBar = new HBox(settingsButton);
+        menuBar.setStyle("-fx-padding: 6;");
+        menuBar.setTranslateX(4);
+        menuBar.setTranslateY(5);
+        menuBar.setSpacing(5);
+        menuBar.setAlignment(javafx.geometry.Pos.BOTTOM_RIGHT);
+
+
+        settingsButton.setOnAction(_ -> {
+            screenManager.switchScene(new SettingsScreen(stage, screenManager).getScene());
+        });
+        root.setTop(settingsButton);
+
         HBox iconBox = new HBox(githubButton, discordButton);
         iconBox.setStyle("-fx-padding: 6;");
         iconBox.setTranslateX(4);
         iconBox.setTranslateY(5);
         iconBox.setSpacing(5);
-        iconBox.setAlignment(javafx.geometry.Pos.BOTTOM_RIGHT);
+        iconBox.setAlignment(Pos.TOP_RIGHT);
 
         Label creditLabel = new Label("Developed by Max Field (@m7xed)");
         creditLabel.getStyleClass().add("credit-label");

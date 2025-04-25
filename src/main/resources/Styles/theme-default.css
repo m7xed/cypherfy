@@ -1,0 +1,67 @@
+/* BACKGROUND STYLES */
+.root, .themed-scroll-pane {
+    -fx-background-color: linear-gradient(to right, #a3bffa, #c49fff);
+}
+
+/* BUTTON STYLES */
+.button {
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 2);
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #2575fc, #6a11cb);
+    -fx-text-fill: #f9f9f9;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 12, 0.0, 0, 2);
+}
+
+/* INPUT FIELD STYLES */
+.input-field {
+    -fx-background-color: transparent, linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-text-fill: #ffffff;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.0, 0, 2);
+    -fx-highlight-fill: #5FC3E4;
+    -fx-highlight-text-fill: #000000;
+    -fx-focus-color: #5FC3E4;
+    -fx-faint-focus-color: transparent;
+}
+
+/* SLIDER STYLES */
+.slider.track {
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.0, 0, 1);
+}
+
+.slider.thumb {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.0, 0, 1);
+}
+
+.slider.thumb:hover {
+    -fx-background-color: #f9f9f9;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.6), 10, 0.0, 0, 2);
+}
+
+.slider .tick-mark,
+.slider .minor-tick-mark {
+    -fx-stroke: transparent;
+}
+
+.slider.axis {
+    -fx-tick-label-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0.0, 0, 1);
+}
+
+/* LABEL STYLES */
+.title-label {
+    -fx-text-fill: #ffffff;
+    -fx-background-color: linear-gradient(to right, #6a11cb, #2575fc);
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 2);
+    -fx-border-color: transparent;
+}
+
+.credit-label {
+    -fx-text-fill: #ffffff;
+}

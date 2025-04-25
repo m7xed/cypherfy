@@ -1,0 +1,111 @@
+.title-button {
+    -fx-cursor: hand;
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 0px;
+    -fx-border-width: 2px;
+    -fx-opacity: 1;
+    -fx-text-alignment: center;
+    -fx-font-smoothing-type: lcd;
+    -fx-transition: all 0.3s ease-in-out;
+
+    -fx-shape: "M 20,0 L 280,0 L 250,100 L 0,100 Z";
+}
+
+.menu-button {
+    -fx-cursor: hand;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 3px 6px;
+    -fx-border-radius: 0px;
+    -fx-border-width: 2px;
+    -fx-opacity: 1;
+    -fx-text-alignment: center;
+    -fx-font-smoothing-type: lcd;
+    -fx-transition: all 0.3s ease-in-out;
+
+    -fx-pref-width: 300px;
+    -fx-min-width: 300px;
+    -fx-pref-height: 55px;
+    -fx-min-height: 55px;
+
+    -fx-line-height: 32px;
+
+    -fx-shape: "M 20,0 L 280,0 L 250,100 L 0,100 Z";
+}
+
+.icon-button {
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+    -fx-padding: 8px;
+    -fx-cursor: hand;
+    -fx-shape: "M 10,0 L 90,0 L 80,50 L 0,50 Z"; /* Adjusted parallelogram for smaller square-like shape */
+    -fx-pref-width: 60px;
+    -fx-pref-height: 50px;
+    -fx-alignment: center;
+    -fx-transition: all 0.3s ease-in-out;
+    -fx-opacity: 1;
+}
+
+.input-field {
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-padding: 10 15;
+    -fx-max-width: 600px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-cursor: text;
+    -fx-faint-focus-color: transparent;
+}
+
+.credit-label {
+    -fx-font-size: 14px;
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-padding: 5px;
+}
+
+.title-label {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0px;
+    -fx-padding: 10px 55px;
+    -fx-border-radius: 0px;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+    -fx-opacity: 1;
+    -fx-text-alignment: center;
+    -fx-font-smoothing-type: lcd;
+    -fx-transition: all 0.3s ease-in-out;
+
+    -fx-shape: "M 20,0 L 280,0 L 250,100 L 0,100 Z";
+}
+
+.slider {
+    -fx-padding: 10px 0px;
+    -fx-background-color: transparent;
+}
+
+.slider .track {
+    -fx-background-radius: 2px;
+    -fx-padding: 4px;
+    -fx-pref-height: 6px;
+}
+
+.slider .thumb {
+    -fx-background-radius: 100%;
+    -fx-pref-width: 18px;
+    -fx-pref-height: 18px;
+    -fx-cursor: hand;
+    -fx-transition: all 0.2s ease-in-out;
+}
+
+.slider .axis {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-opacity: 1;
+}

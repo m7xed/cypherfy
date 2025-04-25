@@ -1,5 +1,7 @@
 package gui;
 
+import backend.system.ConfigManager;
+import backend.system.ThemeHandler;
 import gui.visualizations.CipherNames;
 import gui.visualizations.EncryptionScreen;
 import javafx.geometry.Insets;
@@ -14,7 +16,7 @@ public class MenuScreen {
 
     public MenuScreen(Stage stage, ScreenManager screenManager) {
         // Create scene using template method
-        menuScene = screenManager.createTemplateScene(stage);
+        menuScene = ScreenManager.createTemplateScene(stage);
 
         // Retrieve the root layout (BorderPane) and center VBox from the scene
         BorderPane root = (BorderPane) menuScene.getRoot();

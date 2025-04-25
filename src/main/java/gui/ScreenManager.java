@@ -1,5 +1,6 @@
 package gui;
 
+import backend.system.ThemeHandler;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.geometry.Insets;
@@ -24,18 +25,36 @@ public class ScreenManager {
     }
 
     public void switchScene(Scene newScene) {
-        Parent oldRoot = stage.getScene().getRoot();
+        newScene.getStylesheets().clear();
+
+        applyStyleSheets(newScene);
+
+        String themePath = ThemeHandler.getThemePath();
+        System.out.println("Applying theme from path: " + themePath);
+        System.out.println("Resource URL: " + getClass().getResource(themePath));
+        newScene.getStylesheets().add(Objects.requireNonNull(
+                getClass().getResource(themePath)).toExternalForm()
+        );
+
+
+        Scene currentScene = stage.getScene();
+
+        if (currentScene == null) {
+            // No scene currently on stage — no fade needed
+            stage.setScene(newScene);
+            Platform.runLater(stage::sizeToScene);
+            return;
+        }
+
+        Parent oldRoot = currentScene.getRoot();
+
         FadeTransition fadeOut = new FadeTransition(Duration.millis(300), oldRoot);
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
         fadeOut.setOnFinished(_ -> {
-            // 1) Swap in the new scene
             stage.setScene(newScene);
-
-            // 2) Force a layout update on the new scene
             Platform.runLater(stage::sizeToScene);
 
-            // 3) Fade in the new scene
             Parent newRoot = newScene.getRoot();
             FadeTransition fadeIn = new FadeTransition(Duration.millis(300), newRoot);
             fadeIn.setFromValue(0.0);
@@ -45,7 +64,8 @@ public class ScreenManager {
         fadeOut.play();
     }
 
-    public static Scene createTemplateScene(Stage stage){
+
+    public static Scene createTemplateScene(Stage stage) {
         // Create layout objects
         BorderPane borderPane = new BorderPane();
         borderPane.setPadding(new Insets(10));
@@ -55,7 +75,7 @@ public class ScreenManager {
         vBox.setSpacing(5);
         borderPane.setCenter(vBox);
 
-        borderPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8);");
+        borderPane.getStyleClass().add("themed-background");
 
         // Init Scene
         return new Scene(borderPane,
@@ -71,20 +91,21 @@ public class ScreenManager {
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(5);
 
-        // Set VBox background to transparent to match the scrollpane's background
-        vBox.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8);");
+        // Set VBox background too transparent to match the scroll pane's background
+        borderPane.getStyleClass().add("themed-background");
+
 
         ScrollPane scrollPane = new ScrollPane(vBox);
         scrollPane.setFitToWidth(true); // make scroll content match width
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER); // horizontal scrolling off
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        scrollPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8); -fx-padding: 0; -fx-border-width: 0;");
+        scrollPane.getStyleClass().add("themed-scroll-pane");
 
         // Make sure the VBox fills the ScrollPane by setting its preferred height
         vBox.setMinHeight(Region.USE_COMPUTED_SIZE);
 
         borderPane.setCenter(scrollPane);
-        borderPane.setStyle("-fx-background-color: linear-gradient(to right, #e400c9, #2bc8f8);");
+        borderPane.getStyleClass().add("themed-background");
 
         return new Scene(borderPane,
                 GUIFeatures.GUI_WIDTH.getValue(),
@@ -93,11 +114,7 @@ public class ScreenManager {
 
 
     public void applyStyleSheets(Scene scene) {
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/fieldStyles.css")).toExternalForm());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/labelStyles.css")).toExternalForm());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/buttonStyles.css")).toExternalForm());
-        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/sliderStyles.css")).toExternalForm());
-
+        scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Styles/base.css")).toExternalForm());
     }
 
     public static Font loadFont(double size) {
@@ -119,6 +136,25 @@ public class ScreenManager {
             System.err.println("⚠️ Failed to load /fonts/CypherfyFont.otf");
         }
     }
+
+    public void reloadStyles(Scene scene) {
+        // Clear any previous stylesheets
+        scene.getStylesheets().clear();
+        System.out.println("Stylesheets cleared.");
+
+        // Apply base styles
+        applyStyleSheets(scene); // Ensure base.css is loaded here
+        System.out.println("Base styles applied.");
+
+        // Apply the current theme stylesheet
+        String themePath = ThemeHandler.getThemePath();
+        scene.getStylesheets().add(Objects.requireNonNull(
+                getClass().getResource(themePath)).toExternalForm());
+        System.out.println("Theme stylesheet applied: " + themePath);
+
+        scene.getRoot().requestLayout();
+    }
 }
+
 
 
