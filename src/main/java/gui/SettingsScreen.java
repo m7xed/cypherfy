@@ -62,18 +62,17 @@ public class SettingsScreen {
                         "-fx-background-color: " + gradientStyle + ";"
         );
         btn.setOnAction(e -> {
-            // Create an instance of ScreenManager
-            ScreenManager screenManager = new ScreenManager(stage);
+            // Switch to the new theme first
+            ThemeHandler.switchTheme(themeFile, stage.getScene());
 
+            // Then reload styles to ensure the theme is applied correctly
+            ScreenManager screenManager = new ScreenManager(stage);
             Scene currentScene = stage.getScene();
             if (currentScene != null) {
-                // Call reloadStyles on the instance
-                screenManager.reloadStyles(currentScene);
+                screenManager.reloadStyles(currentScene);  // Ensure the current scene gets its styles refreshed
             }
-
-            // Switch to the new theme
-            ThemeHandler.switchTheme(themeFile, stage.getScene());
         });
+
         return btn;
     }
 

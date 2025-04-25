@@ -138,21 +138,28 @@ public class ScreenManager {
     }
 
     public void reloadStyles(Scene scene) {
-        // Clear any previous stylesheets
+        // Clear previous stylesheets
         scene.getStylesheets().clear();
         System.out.println("Stylesheets cleared.");
 
         // Apply base styles
-        applyStyleSheets(scene); // Ensure base.css is loaded here
+        applyStyleSheets(scene);
         System.out.println("Base styles applied.");
 
-        // Apply the current theme stylesheet
+        // Apply the theme stylesheet
         String themePath = ThemeHandler.getThemePath();
         scene.getStylesheets().add(Objects.requireNonNull(
                 getClass().getResource(themePath)).toExternalForm());
         System.out.println("Theme stylesheet applied: " + themePath);
 
-        scene.getRoot().requestLayout();
+        // Apply CSS and force layout recalculation
+        scene.getRoot().applyCss();  // Forces the CSS to be applied to the scene
+        scene.getRoot().requestLayout();  // Forces a layout recalculation
+
+        // Delay layout update to allow UI to refresh properly
+        Platform.runLater(() -> {
+            scene.getRoot().requestLayout();  // Request layout again if needed
+        });
     }
 }
 
