@@ -147,4 +147,4 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 - **JavaFX** – UI Framework.
 - **JUnit** – Testing framework.
 - **OpenJFX Community** – For maintaining JavaFX.
-- **OpenAI ChatGPT** – Assistance with planning, UI strategy, and writing.
+- **OpenAI ChatGPT** – Assistance with documentation structuring and writing.
