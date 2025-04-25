@@ -1,20 +1,19 @@
+
 # Cypherfy: Interactive Encryption Sandbox
 
 ## Project Overview
 
-Cypherfy is a Java-based interactive encryption sandbox that allows users to explore classical cryptographic algorithms via a user-friendly JavaFX graphical interface. It currently supports Caesar Cipher, Atbash Cipher, and ROT13, with plans for future algorithms like the Vigenère Cipher.
+Cypherfy is a Java-based interactive encryption sandbox that allows users to explore cryptographic algorithms via a user-friendly JavaFX graphical interface. Currently, it supports the Caesar Cipher with plans to expand to other algorithms like Atbash and Vigenère in the future.
 
-Cypherfy is designed with a smooth, visually appealing UI and intuitive interactions, making it both educational and practical for exploring encryption logic. Users can input text, view the transformation in real time, and enjoy polished transitions between components.
+Cypherfy is designed with a smooth, visually appealing UI and intuitive interactions, making it both educational and practical for exploring encryption logic. Users can input text, view the transformation in real-time, and enjoy polished transitions between components.
 
 ---
 
 ## Key Features
 
-### ✅ Implemented Cryptographic Algorithms
+### ✅ Implemented Cryptographic Algorithm
 
 - **Caesar Cipher**: Shifts each letter in the plaintext by a fixed number of positions in the alphabet.
-- **Atbash Cipher**: Substitution cipher mapping each letter to its opposite (e.g., A → Z).
-- **ROT13**: Caesar cipher variant that shifts each letter by 13 positions.
 
 ### 🎨 Graphical Interface
 
@@ -26,6 +25,13 @@ Cypherfy is designed with a smooth, visually appealing UI and intuitive interact
   - Fully resizable UI with responsive design.
 - **Custom Buttons & Shapes**: CSS-styled parallelogram buttons with unique shape customization.
 - **Custom Fonts & Icons**: Stylish embedded fonts and project-themed assets.
+  
+### 🖌️ Theme Selection with CSS
+
+- **Dynamic Theme Support**: Users can choose different UI themes that can be customized via CSS.
+  - Multiple themes available for a personalized look and feel.
+  - Easily adjustable color schemes, button styles, and font options.
+  - Ability to implement additional themes by modifying CSS files.
 
 ### 🧠 Smart Input Handling
 
@@ -51,19 +57,18 @@ Cypherfy is designed with a smooth, visually appealing UI and intuitive interact
 
 ### ✅ Completed Features
 
-- Caesar Cipher, Atbash Cipher fully functional.
-- ROT13 base added (not fully functional yet).
+- **Caesar Cipher** fully functional.
 - Full JavaFX integration with:
   - Title screen and menu system.
   - Custom-styled buttons and animations.
 - Text input filtering and flash effect.
-- Unit tests for Caesar and Atbash ciphers.
 - Template scene system via `ScreenManager`.
+- Basic theme selection with CSS support.
 
 ### 🔜 Planned Features
 
+- **Atbash Cipher**: Implement the classic substitution cipher.
 - **Vigenère Cipher**: Fully functional cipher with custom key support.
-- **ROT13 Completion**: Make ROT13 a usable standalone option.
 - **Encryption History**: Track and display past operations.
 - **File Import/Export**: Load input from files and save encrypted output.
 - **Advanced GUI Features**:
@@ -114,7 +119,7 @@ Cypherfy is designed with a smooth, visually appealing UI and intuitive interact
 
 ## 🧪 Testing
 
-- **JUnit** tests included for Caesar and Atbash implementations.
+- **JUnit** tests included for Caesar cipher.
 - More tests planned as additional ciphers and features are completed.
 
 ---
@@ -142,4 +147,4 @@ Licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 - **JavaFX** – UI Framework.
 - **JUnit** – Testing framework.
 - **OpenJFX Community** – For maintaining JavaFX.
-- **OpenAI ChatGPT** – Assistance with planning, UI strategy, and writing.
+- **OpenAI ChatGPT** – Assistance with documentation structuring and writing.
