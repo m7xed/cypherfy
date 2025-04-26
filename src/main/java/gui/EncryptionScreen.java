@@ -1,7 +1,6 @@
-package gui.visualizations;
+package gui;
 
-import gui.MenuScreen;
-import gui.ScreenManager;
+import gui.visualizations.CaesarVisualisation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -110,22 +109,14 @@ public class EncryptionScreen {
 
             switch (cipherName) {
                 case "Caesar Cipher":
-                    screenManager.switchScene(new CaesarVisual(stage, screenManager, text).getScene());
+                    screenManager.switchScene(new CaesarVisualisation(stage, screenManager, text).getScene());
 
                 case "Vigenere Cipher":
 
                 case "ATBash Cipher":
 
-
-
             }
-
-
-
-
-
         });
-
         input.setOnAction(_ -> encrypt.fire());
 
         HBox titleContainer = new HBox(title);
