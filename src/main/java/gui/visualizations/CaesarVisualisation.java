@@ -1,10 +1,10 @@
 package gui.visualizations;
 
-import backend.CaesarCipher;
+import backend.ciphers.CaesarCipher;
+import gui.EncryptionScreen;
 import gui.ScreenManager;
 
 import javafx.animation.*;
-import javafx.application.Platform;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,11 +13,11 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class CaesarVisual {
+public class CaesarVisualisation {
     private final Scene caesarVisual;
     private final Button submitButton;
 
-    public CaesarVisual(Stage stage, ScreenManager screenManager, String data) {
+    public CaesarVisualisation(Stage stage, ScreenManager screenManager, String data) {
         caesarVisual = ScreenManager.createVisualisationScene(stage);
 
         // Access layout
@@ -84,7 +84,7 @@ public class CaesarVisual {
     public void playVisualisation(String data, int key) {
 
         submitButton.setDisable(true); // Disable the button to prevent multiple clicks
-        buttonFade.fadeSubmitButtonOut(submitButton); // Optionally fade out the button
+        ButtonFade.fadeSubmitButtonOut(submitButton); // Optionally fade out the button
 
         SequentialTransition st = new SequentialTransition();
 
