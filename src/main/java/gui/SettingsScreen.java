@@ -14,37 +14,51 @@ public class SettingsScreen {
     private final Scene settingsScreen;
 
     public SettingsScreen(Stage stage, ScreenManager screenManager) {
-        // Create scene using template method
         settingsScreen = ScreenManager.createTemplateScene(stage);
 
         BorderPane root = (BorderPane) settingsScreen.getRoot();
-        VBox vBox = (VBox) root.getCenter();
+        VBox centerVBox = new VBox(30);
+        centerVBox.setAlignment(Pos.TOP_CENTER);
+        centerVBox.setPadding(new javafx.geometry.Insets(40, 20, 20, 20)); // Top-heavy padding for space
+        root.setCenter(centerVBox);
+
         Label title = new Label("Settings");
         title.getStyleClass().add("title-label");
 
-        Button themeDefault = createThemeButton("theme-default.css", "linear-gradient(to right, #e400c9, #2bc8f8)", stage);
-        Button themeFlame = createThemeButton("theme-flame.css", "linear-gradient(to right, #FF4E50, #F9D423)", stage);
-        Button themeOcean = createThemeButton("theme-ocean.css", "linear-gradient(to right, #ffffff, #dddddd)", stage);
-        Button themeSpace = createThemeButton("theme-space.css", "linear-gradient(to right, #0077be, #00c6ff)", stage);
+        // Section title for theme selection
+        Label themeLabel = new Label("Choose Theme:");
+        themeLabel.setStyle("-fx-text-fill: white; -fx-font-size: 18px;");
+
+        HBox themeButtons = new HBox(20,
+                createThemeButton("theme-default.css", "linear-gradient(to right, #e400c9, #2bc8f8)", stage),
+                createThemeButton("theme-flame.css", "linear-gradient(to right, #FF4E50, #F9D423)", stage),
+                createThemeButton("theme-ocean.css", "linear-gradient(to right, #ffffff, #dddddd)", stage),
+                createThemeButton("theme-space.css", "linear-gradient(to right, #0077be, #00c6ff)", stage)
+        );
+        themeButtons.setAlignment(Pos.CENTER);
+
+        VBox themeSection = new VBox(10, themeLabel, themeButtons);
+        themeSection.setAlignment(Pos.CENTER);
 
         Button backButton = new Button("Back to Title");
         backButton.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 28;");
         backButton.getStyleClass().add("menu-button");
+        backButton.setOnAction(event ->
+                screenManager.switchScene(new TitleScreen(stage, screenManager).getTitleScene())
+        );
+
+        // Add all components
+        centerVBox.getChildren().addAll(title, themeSection);
+
+        // Back button in bottom section with padding
+        VBox bottomBox = new VBox(backButton);
+        bottomBox.setAlignment(Pos.CENTER);
+        bottomBox.setPadding(new javafx.geometry.Insets(20));
+        root.setBottom(bottomBox);
+
         screenManager.applyStyleSheets(settingsScreen);
-
-        backButton.setOnAction(event -> {
-            screenManager.switchScene(new TitleScreen(stage, screenManager).getTitleScene());
-        });
-
-
-        HBox themeButtons = new HBox(15, themeDefault, themeFlame, themeOcean, themeSpace);
-        themeButtons.setAlignment(Pos.CENTER);
-
-
-
-        vBox.getChildren().addAll(title, themeButtons);
-        root.setBottom(backButton);
     }
+
 
     public Scene getScene() {
         return settingsScreen;
@@ -62,16 +76,15 @@ public class SettingsScreen {
                         "-fx-background-color: " + gradientStyle + ";"
         );
         btn.setOnAction(e -> {
-            // Switch to the new theme first
-            ThemeHandler.switchTheme(themeFile, stage.getScene());
-
-            // Then reload styles to ensure the theme is applied correctly
-            ScreenManager screenManager = new ScreenManager(stage);
-            Scene currentScene = stage.getScene();
-            if (currentScene != null) {
-                screenManager.reloadStyles(currentScene);  // Ensure the current scene gets its styles refreshed
+            Scene scene = stage.getScene();
+            if (scene != null) {
+                ThemeHandler.fadeThemeTransition(scene, () -> {
+                    ThemeHandler.switchTheme(themeFile, scene);
+                    new ScreenManager(stage).reloadStyles(scene);
+                });
             }
         });
+
 
         return btn;
     }
