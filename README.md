@@ -72,7 +72,7 @@ Cypherfy is designed with a smooth, visually appealing UI and intuitive interact
 - **Encryption History**: Track and display past operations.
 - **File Import/Export**: Load input from files and save encrypted output.
 - **Advanced GUI Features**:
-  - Font/theme customization.
+  - Theme customization.
   - Expanded visual feedback for encryption steps.
 
 ---
