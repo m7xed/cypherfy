@@ -17,15 +17,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ATBashVisualisation {
     private final int MAX_LENGTH = 15;
     private final Scene ATBashScreen;
     private boolean isFlashing = false;
+    private String lastOutputText = "";
 
-    // Used for debouncing the animation start
     private PauseTransition animationPause;
 
     public ATBashVisualisation(Stage stage, ScreenManager screenManager) {
@@ -45,7 +42,7 @@ public class ATBashVisualisation {
         root.setTop(titleContainer);
 
         // Center container for input + output
-        VBox centerBox = new VBox(25); // spacing between input and output
+        VBox centerBox = new VBox(25);
         centerBox.setAlignment(Pos.CENTER);
         centerBox.setPadding(new Insets(20));
 
@@ -67,18 +64,21 @@ public class ATBashVisualisation {
         redOverlay.heightProperty().bind(input.heightProperty());
         inputContainer.getChildren().add(redOverlay);
 
+        // Label for output
+        Text outputLabel = new Text("Encrypted Result:");
+        outputLabel.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 24;");
+
         // Live result display as a list of individual Text nodes
         HBox visualOutputBox = new HBox(10);
         visualOutputBox.setAlignment(Pos.CENTER);
         visualOutputBox.setMaxWidth(500);
-        visualOutputBox.setStyle("-fx-alignment: center;");  // Ensures center alignment in its container
+        visualOutputBox.setStyle("-fx-alignment: center;");
 
-        // Wrap the result box inside a StackPane to maintain position
         StackPane resultContainer = new StackPane(visualOutputBox);
         resultContainer.setMaxWidth(500);
         resultContainer.setAlignment(Pos.CENTER);
 
-        centerBox.getChildren().addAll(inputContainer, resultContainer);
+        centerBox.getChildren().addAll(inputContainer, outputLabel, resultContainer);
         root.setCenter(centerBox);
 
         // Input formatting and filtering
@@ -106,14 +106,14 @@ public class ATBashVisualisation {
         });
 
         // Debounce and delay before triggering the animation
-        animationPause = new PauseTransition(Duration.millis(300)); // 300ms delay
+        animationPause = new PauseTransition(Duration.millis(300));
         animationPause.setOnFinished(event -> {
             animateTextFlipping(visualOutputBox, applyAtbash(input.getText()));
         });
 
         // Update cipher output live with flip animation for each letter
         input.textProperty().addListener((obs, oldVal, newVal) -> {
-            animationPause.playFromStart(); // Restart the delay on every new input
+            animationPause.playFromStart();
         });
 
         // Back button
@@ -145,42 +145,40 @@ public class ATBashVisualisation {
     }
 
     private void animateTextFlipping(HBox visualOutputBox, String newText) {
-        // Clear previous output
-        visualOutputBox.getChildren().clear();
+        int oldLength = lastOutputText.length();
+        int newLength = newText.length();
 
-        List<Text> letters = new ArrayList<>();
-        for (char c : newText.toCharArray()) {
-            Text letter = new Text(String.valueOf(c));
-            letter.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 36;");
-            letters.add(letter);
+        if (newLength < oldLength) {
+            visualOutputBox.getChildren().clear();
+            lastOutputText = "";
+            animateTextFlipping(visualOutputBox, newText);
+            return;
         }
 
-        // Add the letters to the output box
-        visualOutputBox.getChildren().addAll(letters);
-
-        // Create flip animation for each letter
-        for (int i = 0; i < letters.size(); i++) {
-            Text letter = letters.get(i);
-            letter.setOpacity(0); // Initially make letters invisible
+        for (int i = oldLength; i < newLength; i++) {
+            char c = newText.charAt(i);
+            Text letter = new Text(String.valueOf(c));
+            letter.setStyle("-fx-font-family: 'SDDystopianDemo'; -fx-font-size: 36;");
+            letter.setOpacity(0);
+            visualOutputBox.getChildren().add(letter);
 
             RotateTransition rotateOut = new RotateTransition(Duration.millis(250), letter);
             rotateOut.setFromAngle(0);
             rotateOut.setToAngle(90);
-            int finalI = i;
-            rotateOut.setOnFinished(e -> {
-                letter.setOpacity(1); // Make it visible after rotation
-                letter.setText(String.valueOf(newText.charAt(finalI))); // Update text to flipped value
 
+            rotateOut.setOnFinished(e -> {
+                letter.setOpacity(1);
                 RotateTransition rotateIn = new RotateTransition(Duration.millis(250), letter);
                 rotateIn.setFromAngle(-90);
                 rotateIn.setToAngle(0);
-                rotateIn.setCycleCount(1);
                 rotateIn.play();
             });
-            rotateOut.setCycleCount(1);
-            rotateOut.setDelay(Duration.millis(i * 100)); // Stagger the animations
+
+            rotateOut.setDelay(Duration.millis((i - oldLength) * 100));
             rotateOut.play();
         }
+
+        lastOutputText = newText;
     }
 
     private void playFlash(Rectangle overlay) {
