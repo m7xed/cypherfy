@@ -8,7 +8,7 @@ import javafx.application.Platform;
 import javafx.scene.control.Button;
 import javafx.util.Duration;
 
-public class buttonFade {
+public class ButtonFade {
     private static final double ANIMATION_DURATION = 0.5;
 
     // Fade out to red
