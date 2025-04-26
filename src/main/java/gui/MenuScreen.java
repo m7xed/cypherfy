@@ -1,7 +1,7 @@
 package gui;
 
+import gui.visualizations.ATBashVisualisation;
 import gui.visualizations.CipherNames;
-import gui.visualizations.EncryptionScreen;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -54,7 +54,7 @@ public class MenuScreen {
         screenManager.applyStyleSheets(menuScene);
 
         atbashButton.setOnAction(event -> {
-            screenManager.switchScene(new EncryptionScreen(stage, screenManager, CipherNames.ATBASH.getValue()).getScene());
+            screenManager.switchScene(new ATBashVisualisation(stage, screenManager).getScene());
         });
 
         caesarButton.setOnAction(event -> {
