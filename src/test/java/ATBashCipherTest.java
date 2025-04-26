@@ -1,12 +1,12 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import backend.AtbashCipher;
+import backend.ciphers.ATBashCipher;
 
-public class AtbashCipherTest {
+public class ATBashCipherTest {
 
     @Test
     public void testAtbashCipher() {
-        AtbashCipher atbashCipher = new AtbashCipher();
+        ATBashCipher atbashCipher = new ATBashCipher();
 
         // Test with uppercase letters
         Character[] input1 = {'A', 'B', 'C', 'D', 'E', 'Z'};
