@@ -1,47 +1,47 @@
 /* BACKGROUND STYLES */
 .root, .themed-scroll-pane {
-    -fx-background-color: linear-gradient(to right, #1b2735, #2e3359, #3b2e5a);
+    -fx-background-color: linear-gradient(to right, #0d0d2b, #1c1c3c); /* deep black to dark indigo */
 }
 
 /* BUTTON STYLES */
 .button {
-    -fx-background-color: linear-gradient(to right, #5f2c82, #49a09d);
-    -fx-text-fill: #ffffff;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 2);
+    -fx-background-color: linear-gradient(to right, #5c258d, #2e003e); /* cosmic violet to space purple */
+    -fx-text-fill: #e0e0ff; /* soft pale violet for readability */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.1), 10, 0.0, 0, 2);
 }
 
 .button:hover {
-    -fx-background-color: linear-gradient(to right, #49a09d, #5f2c82);
-    -fx-text-fill: #f0f0f0;
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.8), 12, 0.0, 0, 2);
+    -fx-background-color: linear-gradient(to right, #2e003e, #5c258d); /* reverse direction */
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(155, 89, 182, 0.6), 12, 0.0, 0, 2); /* light purple glow */
 }
 
 /* INPUT FIELD STYLES */
 .input-field {
-    -fx-background-color: transparent, linear-gradient(to right, #5f2c82, #49a09d);
-    -fx-text-fill: #ffffff;
-    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 8, 0.0, 0, 2);
-    -fx-highlight-fill: #a18cd1;
+    -fx-background-color: transparent, linear-gradient(to right, #1c1c3c, #3a0ca3); /* nebula blue-violet */
+    -fx-text-fill: #f1f1ff;
+    -fx-prompt-text-fill: rgba(241, 241, 255, 0.5);
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.2), 8, 0.0, 0, 2);
+    -fx-highlight-fill: #9b59b6; /* soft purple for focused highlights */
     -fx-highlight-text-fill: #000000;
-    -fx-focus-color: #a18cd1;
+    -fx-focus-color: #9b59b6;
     -fx-faint-focus-color: transparent;
 }
 
 /* SLIDER STYLES */
 .slider.track {
-    -fx-background-color: linear-gradient(to right, #5f2c82, #49a09d);
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.0, 0, 1);
+    -fx-background-color: linear-gradient(to right, #5c258d, #2e003e);
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.1), 4, 0.0, 0, 1);
 }
 
 .slider.thumb {
-    -fx-background-color: #ffffff;
+    -fx-background-color: #e0e0ff; /* pale starlight */
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 8, 0.0, 0, 1);
 }
 
 .slider.thumb:hover {
-    -fx-background-color: #eeeeee;
-    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.6), 10, 0.0, 0, 2);
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(155, 89, 182, 0.6), 10, 0.0, 0, 2);
 }
 
 .slider .tick-mark,
@@ -50,18 +50,18 @@
 }
 
 .slider.axis {
-    -fx-tick-label-fill: #ffffff;
+    -fx-tick-label-fill: #e0e0ff;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 4, 0.0, 0, 1);
 }
 
 /* LABEL STYLES */
 .title-label {
-    -fx-text-fill: #ffffff;
-    -fx-background-color: linear-gradient(to right, #5f2c82, #49a09d);
+    -fx-text-fill: #f1f1ff;
+    -fx-background-color: linear-gradient(to right, #2e003e, #5c258d);
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 2);
     -fx-border-color: transparent;
 }
 
 .credit-label {
-    -fx-text-fill: #cccccc;
+    -fx-text-fill: #c1b3fc; /* lavender cosmic glow */
 }
