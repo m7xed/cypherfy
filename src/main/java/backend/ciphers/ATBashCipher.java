@@ -1,6 +1,6 @@
-package backend;
+package backend.ciphers;
 
-public class AtbashCipher {
+public class ATBashCipher {
     public String atbashCipher(Character[] data) {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < data.length; i++) {

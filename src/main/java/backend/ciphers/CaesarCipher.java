@@ -1,4 +1,4 @@
-package backend;
+package backend.ciphers;
 
 public class CaesarCipher {
     private static final int KEY = 1;
